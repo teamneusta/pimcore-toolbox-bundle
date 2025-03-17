@@ -1,0 +1,41 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Neusta\Pimcore\ToolboxBundle\Factory\:
+    resource: '../src/Factory/'
+
+  Neusta\Pimcore\ToolboxBundle\Repository\:
+    resource: '../src/Repository/'
+
+  Neusta\Pimcore\ToolboxBundle\Wrapper\:
+    resource: '../src/Wrapper/'
+
+  ###########
+  # Filters #
+  ###########
+
+  toolbox.filter.published:
+    class: Neusta\Pimcore\ToolboxBundle\Filter\Common\PropertyValueFilter
+    arguments:
+      $propertyName: 'published'
+      $propertyValue: true
+
+  toolbox.filter.unpublished:
+    class: Neusta\Pimcore\ToolboxBundle\Filter\Common\PropertyValueFilter
+    arguments:
+      $propertyName: 'published'
+      $propertyValue: true
+      $accepted: false
+
+  toolbox.pimcore.filter.property.internal_page:
+    class: Neusta\Pimcore\ToolboxBundle\Filter\Pimcore\PropertyFilter
+    arguments:
+      $propertyName: 'internal_page'
+      $propertyValue: true
+
+  toolbox.pimcore.filter.type.page:
+    class: Neusta\Pimcore\ToolboxBundle\Filter\Common\TypeFilter
+    arguments:
+      $type: 'Pimcore\Model\Document\Page'

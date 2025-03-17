@@ -1,0 +1,15 @@
+imports:
+  - { resource: 'test_filter.yaml' }
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    # for tests only
+    public: true
+
+  Neusta\Pimcore\ToolboxBundle\Factory\:
+    resource: '../../../src/Factory/'
+
+  Neusta\Pimcore\ToolboxBundle\Repository\:
+    resource: '../../../src/Repository/'

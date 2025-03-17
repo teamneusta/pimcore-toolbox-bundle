@@ -1,0 +1,28 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  test.filter.internal.published.page:
+    public: true
+    class: Neusta\Pimcore\ToolboxBundle\Filter\Base\AndCompositeFilter
+    arguments:
+      $filters:
+        - '@toolbox.pimcore.filter.property.internal_page'
+        - '@toolbox.filter.published'
+        - '@toolbox.pimcore.filter.type.page'
+
+  test.toolbox.filter.published:
+    alias: toolbox.filter.published
+    public: true
+
+  test.toolbox.filter.unpublished:
+    alias: toolbox.filter.unpublished
+    public: true
+
+  test.toolbox.pimcore.filter.property.internal_page:
+    alias: toolbox.pimcore.filter.property.internal_page
+    public: true
+
+  test.toolbox.pimcore.filter.type.page:
+    alias: toolbox.pimcore.filter.type.page
